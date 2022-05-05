@@ -6,15 +6,9 @@ variable "environment" {
   type = string
   default = "dev"
 }
-variable "tag_environment" {
+variable "default_tags" {
   description = "A mapping of tags to assign to the resource."
-  type = string
-  default = "dev"
-}
-variable "resource_owner" {
-  description = "A mapping of tags to assign to the resource."
-  type = string
-  default = "Test organization"
+  type = map
 }
 variable "region" {
   description = "Region in which resources are deployed"

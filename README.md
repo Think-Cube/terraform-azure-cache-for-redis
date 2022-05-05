@@ -28,6 +28,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_default_tags"></a> [default\_tags](#input\_default\_tags) | A mapping of tags to assign to the resource. | `map` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Var used for backend container name key | `string` | `"dev"` | no |
 | <a name="input_redis_cache_capacity"></a> [redis\_cache\_capacity](#input\_redis\_cache\_capacity) | The size of the Redis cache to deploy. Valid values for a SKU family of C (Basic/Standard) are 0, 1, 2, 3, 4, 5, 6, and for P (Premium) family are 1, 2, 3, 4 | `string` | `"2"` | no |
 | <a name="input_redis_cache_enable_non_ssl_port"></a> [redis\_cache\_enable\_non\_ssl\_port](#input\_redis\_cache\_enable\_non\_ssl\_port) | Enable the non-SSL port (6379) - disabled by default. | `string` | `"false"` | no |
@@ -41,8 +42,6 @@ No modules.
 | <a name="input_region"></a> [region](#input\_region) | Region in which resources are deployed | `string` | `"weu"` | no |
 | <a name="input_resource_group_location"></a> [resource\_group\_location](#input\_resource\_group\_location) | Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created. | `string` | `"West Europe"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the Redis instance. Changing this forces a new resource to be created. | `string` | n/a | yes |
-| <a name="input_resource_owner"></a> [resource\_owner](#input\_resource\_owner) | A mapping of tags to assign to the resource. | `string` | `"Test organization"` | no |
-| <a name="input_tag_environment"></a> [tag\_environment](#input\_tag\_environment) | A mapping of tags to assign to the resource. | `string` | `"dev"` | no |
 
 ## Outputs
 
@@ -57,3 +56,33 @@ No modules.
 | <a name="output_redis_cache_secondary_connection_string"></a> [redis\_cache\_secondary\_connection\_string](#output\_redis\_cache\_secondary\_connection\_string) | The secondary connection string of the Redis Instance. |
 | <a name="output_redis_cache_ssl_port"></a> [redis\_cache\_ssl\_port](#output\_redis\_cache\_ssl\_port) | The SSL Port of the Redis Instance |
 <!-- END_TF_DOCS -->
+
+## How to use
+
+```
+module "cache-for-redis" {
+  source  = "spy86/cache-for-redis/azure"
+  version = "1.0.1"
+  redis_cache_name = "test"
+  resource_group_name = "weu-test-rg"
+  environment = "dev"
+  redis_cache_capacity = "2"
+  redis_cache_enable_non_ssl_port = "false"
+  redis_cache_family = "C"
+  redis_cache_maxmemory_delta = "2"
+  redis_cache_maxmemory_policy = "allkeys-lru"
+  redis_cache_maxmemory_reserved = "10"
+  redis_cache_minimum_tls_version = "1.2"
+  redis_cache_tier = "Standard"
+  region = "weu"
+  resource_group_location = "West Europe"
+
+  default_tags = {
+      Administrator = "Someone"
+      Department = "IT"
+      CostCentre = "ABC123"
+      ContactPerson = "Someone@example.com"
+      ManagedByTerraform = "True"
+}
+}
+```

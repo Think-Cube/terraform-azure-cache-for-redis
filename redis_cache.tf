@@ -14,8 +14,5 @@ resource "azurerm_redis_cache" "main" {
   maxmemory_policy   = "${var.redis_cache_maxmemory_policy}"
 }
 
-  tags = {
-    owner-department = "${var.resource_owner}"
-    environment = "${var.tag_environment}"
-  }
+  tags = "${var.default_tags}"
 }
