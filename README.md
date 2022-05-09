@@ -60,9 +60,13 @@ No modules.
 ## How to use
 
 ```
+provider "azurerm" {
+features {}
+}
+
 module "cache-for-redis" {
   source  = "spy86/cache-for-redis/azure"
-  version = "1.0.1"
+  version = "1.0.2"
   redis_cache_name = "test"
   resource_group_name = "weu-test-rg"
   environment = "dev"
