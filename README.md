@@ -56,37 +56,3 @@ No modules.
 | <a name="output_redis_cache_secondary_connection_string"></a> [redis\_cache\_secondary\_connection\_string](#output\_redis\_cache\_secondary\_connection\_string) | The secondary connection string of the Redis Instance. |
 | <a name="output_redis_cache_ssl_port"></a> [redis\_cache\_ssl\_port](#output\_redis\_cache\_ssl\_port) | The SSL Port of the Redis Instance |
 <!-- END_TF_DOCS -->
-
-## How to use
-
-```
-provider "azurerm" {
-features {}
-}
-
-module "cache-for-redis" {
-  source  = "spy86/cache-for-redis/azure"
-  version = "1.0.2"
-  redis_cache_name = "test"
-  resource_group_name = "weu-test-rg"
-  environment = "dev"
-  redis_cache_capacity = "2"
-  redis_cache_enable_non_ssl_port = "false"
-  redis_cache_family = "C"
-  redis_cache_maxmemory_delta = "2"
-  redis_cache_maxmemory_policy = "allkeys-lru"
-  redis_cache_maxmemory_reserved = "10"
-  redis_cache_minimum_tls_version = "1.2"
-  redis_cache_tier = "Standard"
-  region = "weu"
-  resource_group_location = "West Europe"
-
-  default_tags = {
-      Administrator = "Someone"
-      Department = "IT"
-      CostCentre = "ABC123"
-      ContactPerson = "Someone@example.com"
-      ManagedByTerraform = "True"
-}
-}
-```
