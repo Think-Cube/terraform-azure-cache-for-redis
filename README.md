@@ -4,21 +4,21 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.4 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.0.1 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.3.0 |
 
 #### Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.0.1 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.3.0 |
 
 #### Resources
 
 | Name | Type |
 |------|------|
-| [azurerm_redis_cache.main](https://registry.terraform.io/providers/hashicorp/azurerm/4.0.1/docs/resources/redis_cache) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.0.1/docs/data-sources/client_config) | data source |
-| [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/4.0.1/docs/data-sources/resource_group) | data source |
+| [azurerm_redis_cache.main](https://registry.terraform.io/providers/hashicorp/azurerm/4.3.0/docs/resources/redis_cache) | resource |
+| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.3.0/docs/data-sources/client_config) | data source |
+| [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/4.3.0/docs/data-sources/resource_group) | data source |
 
 #### Inputs
 
