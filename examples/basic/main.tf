@@ -1,19 +1,22 @@
-module "redis_cache" {
-  source                          = "./terraform-azure-cache-for-redis"
-  environment                     = "dev"
-  region                          = "westeurope"
-  resource_group_name             = "rg-example"
-  redis_cache_name                = "app"
-  redis_cache_capacity            = 1
-  redis_cache_family              = "C"
-  redis_cache_tier                = "Standard"
-  redis_cache_enable_non_ssl_port = false
-  redis_cache_minimum_tls_version = "1.2"
-  redis_cache_maxmemory_reserved  = 50
-  redis_cache_maxmemory_delta     = 50
-  redis_cache_maxmemory_policy    = "allkeys-lru"
-  default_tags = {
+module "redis" {
+  source = "github.com/Think-Cube/terraform-azure-cache-for-redis?ref=v1.0.0"
+
+  name                = "my-redis"
+  resource_group_name = "my-rg"
+  location            = "West Europe"
+  capacity            = 1
+  family              = "C"
+  sku_name            = "Standard"
+
+  minimum_tls_version    = "1.2"
+  non_ssl_port_enabled   = false
+
+  redis_configuration = {
+    maxmemory_policy = "allkeys-lru"
+  }
+
+  tags = {
     environment = "dev"
-    project     = "example"
+    managed_by  = "terraform"
   }
 }
